@@ -1,0 +1,54 @@
+# ─── Environment & Secrets ────────────────────────────────────────
+.env
+*.env
+.env.*
+
+# ─── JARVIS local data ───────────────────────────────────────────
+.jarvis/
+conversation_history.json
+preferences.json
+custom_commands.json
+
+# ─── Python ──────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.whl
+
+# ─── Virtual environments ────────────────────────────────────────
+venv/
+env/
+.venv/
+.env/
+
+# ─── IDE ─────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ─── OS files ────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# ─── Chrome / Selenium cache ─────────────────────────────────────
+jarvis_chrome/
+chromedriver*
+geckodriver*
+
+# ─── Screenshots ─────────────────────────────────────────────────
+jarvis_*.png
+
+# ─── Logs ────────────────────────────────────────────────────────
+*.log
+nul
