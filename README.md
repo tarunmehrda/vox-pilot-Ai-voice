@@ -1,6 +1,4 @@
-<![CDATA[<div align="center">
-
-![JARVIS Banner](assets/jarvis_banner.png)
+<div align="center">
 
 # 🤖 J.A.R.V.I.S — v3 Advanced Agent
 
@@ -14,10 +12,12 @@
 
 <br>
 
-**A fully local, voice-controlled AI assistant that automates your entire desktop.**
-**Talk to your PC like Tony Stark talks to JARVIS.**
+> **A fully local, voice-controlled AI assistant that automates your entire desktop.**
+> **Talk to your PC like Tony Stark talks to JARVIS.**
 
-[🚀 Quick Start](#-quick-start) · [✨ Features](#-features) · [🎤 Voice Commands](#-voice-commands) · [📸 Screenshots](#-dashboard) · [⚙️ Configuration](#%EF%B8%8F-configuration)
+<br>
+
+[🚀 Quick Start](#-quick-start) · [✨ Features](#-features) · [🎤 Voice Commands](#-voice-commands) · [🛠️ Tech Stack](#️-tech-stack) · [⚙️ Configuration](#️-configuration)
 
 ---
 
@@ -33,7 +33,7 @@
 
 <br>
 
-### 🏗️ Architecture
+## 🏗️ Architecture
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -55,7 +55,6 @@
 │   │  • Volume (pycaw)   │            │  • Instagram, Twitter  │   │
 │   │  • Screenshot       │            │  • Gmail, LinkedIn     │   │
 │   │  • File Operations  │            │  • Reddit, Facebook    │   │
-│   │  • Telegram/Spotify │            │  • Chrome Navigation   │   │
 │   └────────────────────┘            └────────────────────────┘   │
 │                                                                  │
 │   ┌──────────────────────────────────────────────────────────┐   │
@@ -73,7 +72,7 @@
 | Feature | Description |
 |---------|-------------|
 | **Push-to-Talk** | Hold `Right Ctrl` to record, release to execute |
-| **Wake Word** | Say *"Hey Jarvis"* hands-free (always listening) |
+| **Wake Word** | Say *"Hey Jarvis"* for hands-free always-on mode |
 | **Smart Skip** | Short dictation bypasses AI for 0ms latency |
 | **Conversation Memory** | 20-message rolling context for follow-up commands |
 
@@ -129,8 +128,8 @@
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/jarvis.git
-cd jarvis
+git clone https://github.com/your-username/vox-pilot.git
+cd vox-pilot
 ```
 
 ### 2️⃣ Install Dependencies
@@ -144,19 +143,17 @@ pip install pycaw comtypes
 
 ### 3️⃣ Get Free API Keys
 
-| Service | Get Key | Purpose |
-|---------|---------|---------|
+| Service | Link | Purpose |
+|---------|------|---------|
 | 🟢 **NVIDIA** | [build.nvidia.com](https://build.nvidia.com) | Primary AI (Nemotron reasoning) |
 | 🔴 **Groq** | [console.groq.com](https://console.groq.com) | Fallback AI (LLaMA 3.3 70B) |
 
 ### 4️⃣ Set Environment Variables
 
-```bash
+```powershell
 # Windows PowerShell
-$env:GROQ_API_KEY = "gsk_your_key_here"
+$env:GROQ_API_KEY   = "gsk_your_key_here"
 $env:NVIDIA_API_KEY = "nvapi-your_key_here"
-
-# Or set permanently in System Environment Variables
 ```
 
 ### 5️⃣ Launch JARVIS
@@ -165,134 +162,106 @@ $env:NVIDIA_API_KEY = "nvapi-your_key_here"
 python jarvis_backend.py
 ```
 
-✅ Dashboard opens automatically at **http://localhost:7798**
-✅ Hold **Right Ctrl** to speak commands
-✅ A floating overlay appears showing status
+✅ Dashboard opens automatically at **http://localhost:7798**  
+✅ Hold **Right Ctrl** to speak commands  
+✅ A floating overlay appears showing status  
 
 <br>
 
 ## 🎤 Voice Commands
 
-### 🗣️ App Control
-```
-"open youtube"                    → Opens YouTube
-"open chrome"                     → Opens Chrome browser
-"open notepad"                    → Opens Notepad
-"open spotify"                    → Opens Spotify
-"close chrome"                    → Kills Chrome process
-"open vs code"                    → Opens Visual Studio Code
-```
+<details>
+<summary><b>🗣️ App Control</b></summary>
 
-### 🔍 AI Search & Knowledge
 ```
-"who is the CEO of Google"        → AI-powered web search answer
-"price of Bitcoin today"          → Real-time price lookup
-"what is machine learning"        → AI explanation
-"latest AI news"                  → Top headlines
-"weather in Mumbai"               → Live weather
-"calculate 18 percent of 5000"    → Instant math
+"open youtube"        → Opens YouTube
+"open chrome"         → Opens Chrome browser
+"open notepad"        → Opens Notepad
+"open spotify"        → Opens Spotify
+"close chrome"        → Kills Chrome process
+"open vs code"        → Opens Visual Studio Code
 ```
+</details>
 
-### 🌐 Browser Agent
+<details>
+<summary><b>🔍 AI Search & Knowledge</b></summary>
+
+```
+"who is the CEO of Google"       → AI-powered web search
+"price of Bitcoin today"         → Real-time price lookup
+"what is machine learning"       → AI explanation
+"latest AI news"                 → Top headlines
+"weather in Mumbai"              → Live weather
+"calculate 18 percent of 5000"   → Instant math
+```
+</details>
+
+<details>
+<summary><b>🌐 Browser Agent</b></summary>
+
 ```
 "open youtube search karan aujla"      → YouTube search
 "play lofi beats on spotify"           → Spotify play
 "whatsapp message tarun hello"         → WhatsApp send
 "tweet hello world"                    → Post on Twitter
-"instagram search travel"             → Instagram search
 "open gmail compose leave application" → Gmail compose
-"chrome go to github.com"             → Navigate URL
-"open linkedin search jobs python"     → LinkedIn jobs
+"chrome go to github.com"              → Navigate URL
 ```
+</details>
 
-### 📁 File Management
-```
-"make folder Projects"            → Creates folder on Desktop
-"open downloads folder"           → Opens Downloads in Explorer
-"create file notes.txt"           → Creates new file
-"delete folder OldStuff"          → Deletes folder
-"list desktop"                    → Shows Desktop files
-```
+<details>
+<summary><b>📁 File Management</b></summary>
 
-### ✏️ AI Text Editing
 ```
-"make this in 300 characters"     → Rewrites text to 300 chars
-"make it 500 characters"          → Adjusts to 500 chars
-"make this 50 words"              → Rewrites to 50 words
-"make it shorter"                 → Shortens text
-"make it longer"                  → Expands text
-"make it more detailed"           → Adds detail
-"expand this to 1000 characters"  → Expands to target
-"fix grammar"                     → Fixes grammar errors
-"summarize clipboard"             → Summarizes copied text
-"translate clipboard to Hindi"    → Translates clipboard
+"make folder Projects"     → Creates folder on Desktop
+"open downloads folder"    → Opens Downloads in Explorer
+"create file notes.txt"    → Creates new file
+"delete folder OldStuff"   → Deletes folder
+"list desktop"             → Shows Desktop files
 ```
+</details>
 
-### 🔊 Volume Control
-```
-"set volume to 50"                → Exact 50%
-"increase volume by 20"           → +20%
-"decrease volume by 10"           → -10%
-"volume up"                       → +10% default
-"mute"                            → Toggle mute
-```
+<details>
+<summary><b>✏️ AI Text Editing</b></summary>
 
-### 🖥️ System Control
 ```
-"take screenshot"                 → Capture & save
-"minimize"                        → Minimize window
-"maximize"                        → Maximize window
-"show desktop"                    → Win+D
-"switch window"                   → Alt+Tab
-"lock screen"                     → Lock PC
-"sleep"                           → Sleep mode
-"shutdown"                        → Shutdown PC
+"make this in 300 characters"   → Rewrites to 300 chars
+"make it shorter"               → Shortens text
+"make it longer"                → Expands text
+"fix grammar"                   → Fixes grammar errors
+"summarize clipboard"           → Summarizes copied text
+"translate clipboard to Hindi"  → Translates clipboard
 ```
+</details>
 
-### ⌨️ Keyboard & Mouse
-```
-"select all"                      → Ctrl+A
-"copy"                            → Ctrl+C
-"paste"                           → Ctrl+V
-"undo"                            → Ctrl+Z
-"press enter"                     → Enter key
-"new tab"                         → Ctrl+T
-"close tab"                       → Ctrl+W
-"click"                           → Left click
-"double click"                    → Double click
-"scroll down"                     → Page scroll
-"auto click 10 times every 2 seconds" → Auto clicker
-```
+<details>
+<summary><b>🔊 Volume & System Control</b></summary>
 
-### ⏰ Reminders & Memory
 ```
-"remind me in 5 minutes to call mom"  → Timed alert
-"set timer for 10 minutes"            → Timer
-"clear history"                       → Reset AI memory
-"show history"                        → View conversation log
+"set volume to 50"    → Exact 50%
+"increase volume 20"  → +20%
+"mute"                → Toggle mute
+"take screenshot"     → Capture & save
+"lock screen"         → Lock PC
+"shutdown"            → Shutdown PC
 ```
-
-### 🛠️ Custom Commands
-```
-"add command good morning means open gmail"  → Create shortcut
-"list commands"                              → Show all customs
-```
+</details>
 
 <br>
 
 ## 📊 Dashboard
 
-The web dashboard at `http://localhost:7798` provides a premium, Iron Man-inspired command center:
+The web dashboard at `http://localhost:7798` provides a premium Iron Man-inspired command center:
 
 | Page | Features |
 |------|----------|
-| **📊 Dashboard** | Stats, quick commands, activity log, system status, weekly streak |
+| **📊 Dashboard** | Stats, quick commands, activity log, system status |
 | **🔍 AI Search** | Web-powered AI search with history |
-| **🎮 Agent Control** | Volume sliders, file ops, browser agents, screenshot, power |
+| **🎮 Agent Control** | Volume sliders, file ops, browser agents, screenshot |
 | **📈 Analytics** | Usage charts, command categories, insights |
 | **💻 System Info** | Live CPU/RAM/Disk/Battery monitor |
 | **🧠 AI Memory** | View & manage conversation history |
-| **⚙️ Settings** | API keys, model selection, wake word, custom commands, themes |
+| **⚙️ Settings** | API keys, model selection, wake word, themes |
 
 <br>
 
@@ -300,11 +269,9 @@ The web dashboard at `http://localhost:7798` provides a premium, Iron Man-inspir
 
 ### 🔑 API Keys
 
-Set via environment variables or through the dashboard Settings page:
-
 ```bash
-GROQ_API_KEY=gsk_xxxxx          # Groq console
-NVIDIA_API_KEY=nvapi-xxxxx      # NVIDIA Build
+GROQ_API_KEY=gsk_xxxxx        # Groq console
+NVIDIA_API_KEY=nvapi-xxxxx    # NVIDIA Build
 ```
 
 ### 🧠 AI Models Available
@@ -319,18 +286,18 @@ NVIDIA_API_KEY=nvapi-xxxxx      # NVIDIA Build
 
 ### 🎨 Customization
 
-- **Custom AI Personality**: *"set custom prompt respond like Tony Stark"*
-- **Wake Word**: Change from "hey jarvis" to anything
-- **Accent Colors**: Cyan, Green, Purple, Amber, Red
-- **TTS Speed**: 100-250 WPM
-- **Mic Selection**: Choose from available devices
+- **Custom AI Personality** — *"set custom prompt respond like Tony Stark"*
+- **Wake Word** — Change from "hey jarvis" to anything
+- **Accent Colors** — Cyan, Green, Purple, Amber, Red
+- **TTS Speed** — 100–250 WPM
+- **Mic Selection** — Choose from available devices
 
 <br>
 
 ## 📁 Project Structure
 
 ```
-jarvisfinal/
+vox-pilot/
 ├── jarvis_backend.py       # 🧠 Main backend (4300+ lines)
 │   ├── AI Parser           #    NVIDIA + Groq command parsing
 │   ├── Local Fast-Path     #    200+ regex patterns (0ms)
@@ -365,7 +332,7 @@ jarvisfinal/
 | **System Monitor** | psutil |
 | **News Feed** | feedparser (Google News RSS) |
 | **Web Search** | DuckDuckGo API + HTML scraping |
-| **Dashboard** | Vanilla HTML/CSS/JS (no framework) |
+| **Dashboard** | Vanilla HTML/CSS/JS |
 | **Server** | Python HTTPServer |
 
 </div>
@@ -378,11 +345,8 @@ jarvisfinal/
 <summary><b>❌ "No module named pyaudio"</b></summary>
 
 ```bash
-# Windows
 pip install pipwin
 pipwin install pyaudio
-
-# Or download .whl from https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
 ```
 </details>
 
@@ -408,8 +372,8 @@ pip install pycaw comtypes
 <summary><b>❌ Speech recognition not working</b></summary>
 
 - Check microphone permissions in Windows Settings
-- Run `python -c "import speech_recognition as sr; print(sr.Microphone.list_microphone_names())"` to verify
-- Select the correct mic in Dashboard → Settings → Microphone Selection
+- Run `python -c "import speech_recognition as sr; print(sr.Microphone.list_microphone_names())"` to list mics
+- Select correct mic in Dashboard → Settings → Microphone Selection
 </details>
 
 <details>
@@ -434,7 +398,7 @@ pip install pycaw comtypes
 
 ## 📜 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 <br>
 
@@ -446,8 +410,6 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 <br>
 
-**Built with 💙 by Tarun**
-
 *"Sometimes you gotta run before you can walk." — Tony Stark*
 
 <br>
@@ -456,5 +418,6 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 [![Powered by NVIDIA](https://img.shields.io/badge/Powered_by-NVIDIA_AI-76B900?style=flat-square&logo=nvidia&logoColor=white)](https://nvidia.com)
 [![Uses Groq](https://img.shields.io/badge/Uses-Groq_Cloud-F55036?style=flat-square)](https://groq.com)
 
+**Built with 💙 by Tarun**
+
 </div>
-]]>
